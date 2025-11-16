@@ -8,7 +8,6 @@ import {
 import React, { useState } from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import FilterIcon from '../assets/icons/FilterIcon.js';
 
 export default function HomeScreen({ route }) {
   const name = route.params.firstName;
@@ -37,10 +36,11 @@ export default function HomeScreen({ route }) {
             style={styles.searchInput}
           />
         </View>
-        <View>
-          <FilterIcon/>
-        </View>
       </View>
+        <View>
+          <Text style={styles.title}>
+            Recommendation Here</Text>
+        </View>
     </View>
   );
 }
@@ -71,10 +71,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderRadius: 12,
-    borderWidth: 1,
-    padding: 14,
+    padding: 10,
+    gap: 5,
     borderColor: 'black',
-    backgroundColor: 'rgba(134, 134, 158, 0.3)',
+    backgroundColor: 'rgba(134, 134, 158, 0.1)',
   },
   searchInput: {
     flex: 1,
@@ -86,4 +86,10 @@ const styles = StyleSheet.create({
     width: '95%',
     gap: 10,
   },
+  title:{
+    fontSize: 22,
+    fontFamily: 'BrandonGrotesque-Medium',
+    marginHorizontal: 15,
+    marginVertical: 20,
+  }
 });
