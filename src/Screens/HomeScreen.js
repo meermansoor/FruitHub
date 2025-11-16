@@ -8,11 +8,27 @@ import {
 import React, { useState } from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { FlatList } from 'react-native';
 
 export default function HomeScreen({ route }) {
   const name = route.params.firstName;
 
   const [searchText, setSearchText] = useState('');
+
+  const DATA = [
+    { id:'1', title: 'Fruit Salad 1' },
+    { id: '2', title: 'Fruit Salad 2' },
+    { id: '3', title: 'Fruit Salad 3' },
+    { id: '4', title: 'Fruit Salad 4' },
+    { id: '5', title: 'Fruit Salad 5' },
+    { id: '6', title: 'Fruit Salad 6' },
+  ];
+
+  const renderItem = ({ item }) => (
+    <View style={styles.item}>
+      <Text style={styles.itemTitle}>{item.title}</Text>
+    </View>
+  );
 
   return (
     <View style={styles.container}>
@@ -40,6 +56,14 @@ export default function HomeScreen({ route }) {
         <View>
           <Text style={styles.title}>
             Recommendation Here</Text>
+            
+            <FlatList
+              data={DATA}
+              renderItem={renderItem}
+              keyExtractor={item => item.id}
+              numColumns={2}
+              columnWrapperStyle={styles.row}
+            />
         </View>
     </View>
   );
@@ -91,5 +115,26 @@ const styles = StyleSheet.create({
     fontFamily: 'BrandonGrotesque-Medium',
     marginHorizontal: 15,
     marginVertical: 20,
-  }
+  },
+  ProductList:{
+    marginHorizontal: 10,
+    flex:1,
+  },
+  row: {
+    justifyContent: 'space-between',
+    marginHorizontal: 10,
+  },
+  item: {
+    backgroundColor: '#f9c2ff',
+    padding: 20,
+    marginVertical: 8,
+    width: '48%',
+    borderRadius: 10,
+  },
+  itemTitle: {
+    fontSize: 16,
+    fontFamily: 'BrandonGrotesque-Regular',
+    textAlign: 'center',
+  },
+
 });
